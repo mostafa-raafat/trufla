@@ -13,7 +13,7 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
   /**
-   * getProducts: Get All Product.
+   * getProducts: Get All Products.
    * @returns {Observable<any>}
    */
   getProducts(): Observable<any> {

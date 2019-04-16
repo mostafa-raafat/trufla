@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  private productSubscription: Subscription;
+  public productSubscription: Subscription;
   public listData: MatTableDataSource < any > ;
   public displayedColumns: string[] = ['id', 'title', 'thumbnailUrl'];
   public searchKey: string;
