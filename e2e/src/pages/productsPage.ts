@@ -1,23 +1,42 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class ProductsPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  incrementCount() {
-    return element(by.id('incButton')).click();
+  async TypeSearch(value: string) {
+    await element(by.className('mat-input-element')).sendKeys(value);
   }
 
-  getCountText() {
-    return element(by.id('countText')).getText();
+  async getRowsCount() {
+    const rowsCount = await element.all(by.className('mat-row')).count();
+    return rowsCount;
   }
 
-  enterName(name: string) {
-    return element(by.id('nameInput')).sendKeys(name);
+  async nextPage() {
+    await element(by.className('mat-paginator-navigation-next')).click();
   }
 
-  readGreeting() {
-    return element(by.id('greeting')).getText();
+  async lastPage() {
+    await element(by.className('mat-paginator-navigation-last')).click();
   }
+
+  async previousPage() {
+    await element(by.className('mat-paginator-navigation-previous')).click();
+  }
+
+  async firstPage() {
+    await element(by.className('mat-paginator-navigation-first')).click();
+  }
+
+  async sortBy(key: string) {
+    await element(by.className(`mat-column-${key}`)).click();
+  }
+
+  async getFirstRowID() {
+    const rowId = await element.all(by.tagName('mat-cell')).first().getText();
+    return Number(rowId);
+  }
+
 }
